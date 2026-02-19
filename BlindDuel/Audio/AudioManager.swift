@@ -67,11 +67,12 @@ final class AudioManager: AudioProviding {
     // MARK: - Position Mapping
     
     /// Map range state to a z-distance for the enemy audio source.
+    /// Keep moderate so distance attenuation doesn't double-suppress volume.
     private func zPosition(for range: RangeState) -> Float {
         switch range {
-        case .far: return -5.0
-        case .mid: return -2.5
-        case .close: return -0.8
+        case .far: return -3.0
+        case .mid: return -1.5
+        case .close: return -0.5
         }
     }
     
@@ -221,9 +222,6 @@ final class AudioManager: AudioProviding {
     func updateEnemyFootsteps(distance: Float, direction: Float, isApproaching: Bool) {
         footstepDistance = distance
         footstepIsApproaching = isApproaching
-        // Nudge target toward the enemy's actual direction but add randomness
-        footstepTargetX = direction + Float.random(in: -0.3...0.3)
-        footstepTargetX = max(-1.0, min(1.0, footstepTargetX))
         
         // If very close (melee), stop footsteps — they're standing in front of you
         if distance < 0.12 && footstepsActive {
@@ -246,28 +244,30 @@ final class AudioManager: AudioProviding {
         return footstepIsApproaching ? base * 0.6 : base
     }
     
-    /// Volume for footstep — wide dynamic range from distance.
-    /// Far = barely audible, close = loud and present.
+    /// Volume for footstep — extreme dynamic range.
+    /// Far = barely a whisper, close = slapping the floor next to you.
     private func footstepVolume() -> Float {
         let t = max(0.0, min(1.0, footstepDistance))
-        // distance 0.0 → volume 1.0,  distance 1.0 → volume 0.05
-        // Use a curve (power of 1.5) so volume drops off faster at distance
-        let falloff = powf(t, 1.5)
-        return 1.0 - falloff * 0.95
+        // Exponential curve: drops off sharply with distance
+        // distance 0.0 → 1.0, distance 0.5 → 0.25, distance 1.0 → 0.02
+        let invT = 1.0 - t
+        return invT * invT * invT * 0.98 + 0.02
     }
     
-    /// Z-depth for footstep — wide spatial range.
+    /// Z-depth for footstep — moderate range so AVAudioEnvironmentNode
+    /// distance attenuation doesn't double-suppress the volume.
     private func footstepZ() -> Float {
         let t = max(0.0, min(1.0, footstepDistance))
-        // distance 0.0 → z = -0.3 (right in front), distance 1.0 → z = -10.0 (far away)
-        return -0.3 - t * 9.7
+        // distance 0.0 → z = -0.5 (right in front), distance 1.0 → z = -3.0
+        // Keep this modest — we control loudness via source.volume, not z-depth
+        return -0.5 - t * 2.5
     }
     
     /// Reverb blend — far = very reverberant, close = dry and sharp.
     private func footstepReverb() -> Float {
         let t = max(0.0, min(1.0, footstepDistance))
-        // distance 0.0 → 0.05 (bone dry), distance 1.0 → 0.7 (heavy room reverb)
-        return 0.05 + t * 0.65
+        // distance 0.0 → 0.05 (bone dry), distance 1.0 → 0.65 (heavy room reverb)
+        return 0.05 + t * 0.60
     }
     
     /// Schedule the next footstep click.
@@ -282,21 +282,25 @@ final class AudioManager: AudioProviding {
     private func fireFootstep() {
         guard footstepsActive else { return }
         
-        // Smoothly drift position toward the wandering target (small steps)
-        let drift: Float = 0.06
+        // Smoothly drift position toward the wandering target
+        let drift: Float = 0.12
         if footstepCurrentX < footstepTargetX {
             footstepCurrentX = min(footstepCurrentX + drift, footstepTargetX)
         } else {
             footstepCurrentX = max(footstepCurrentX - drift, footstepTargetX)
         }
         
-        // Occasionally pick a new random target (simulating unpredictable movement)
-        if Float.random(in: 0...1) < 0.30 {
+        // When we reach the target (or close enough), pick a new one
+        if abs(footstepCurrentX - footstepTargetX) < 0.05 {
+            footstepTargetX = Float.random(in: -1.0...1.0)
+        }
+        // Also randomly change direction sometimes (unpredictable)
+        if Float.random(in: 0...1) < 0.20 {
             footstepTargetX = Float.random(in: -1.0...1.0)
         }
         
         let z = footstepZ()
-        let x = footstepCurrentX * 2.5 // Scale to spatial width
+        let x = footstepCurrentX * 3.0 // Wide spatial field
         let position = AVAudio3DPoint(x: x, y: 0, z: z)
         let reverb = footstepReverb()
         let vol = footstepVolume()
@@ -309,6 +313,8 @@ final class AudioManager: AudioProviding {
         source.reverbBlend = reverb
         source.volume = vol
         source.playOnce()
+        
+        print("[Footstep] dist=\(String(format: "%.2f", footstepDistance)) vol=\(String(format: "%.3f", vol)) x=\(String(format: "%.2f", x)) z=\(String(format: "%.1f", z))")
         
         // Schedule the next click
         scheduleNextFootstep()

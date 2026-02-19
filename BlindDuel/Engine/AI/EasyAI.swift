@@ -26,13 +26,18 @@ final class EasyAI: EnemyBehavior {
     func nextAction(given state: CombatState) -> EnemyAction {
         switch state.range {
         case .far:
-            // Always approach when far
+            // Always approach when far, but sometimes reposition first
+            if Float.random(in: 0...1) < 0.25 {
+                return .reposition
+            }
             return .approach
             
         case .mid:
-            // Approach with moderate probability, otherwise wait
-            if Float.random(in: 0...1) < aggressionLevel {
+            let roll = Float.random(in: 0...1)
+            if roll < aggressionLevel {
                 return .approach
+            } else if roll < 0.5 {
+                return .reposition
             }
             return .wait
             
