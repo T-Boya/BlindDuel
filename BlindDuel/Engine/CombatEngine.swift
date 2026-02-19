@@ -186,7 +186,7 @@ final class CombatEngine {
         
         // Update continuous enemy distance (smoothly interpolates toward range target)
         let targetDistance = Self.targetDistance(for: state.range)
-        let lerpSpeed: Float = 2.5 // units per second
+        let lerpSpeed: Float = 0.7 // units per second — slow enough to hear the gradient
         let maxStep = Float(deltaTime) * lerpSpeed
         if state.enemyDistance < targetDistance {
             state.enemyDistance = min(state.enemyDistance + maxStep, targetDistance)

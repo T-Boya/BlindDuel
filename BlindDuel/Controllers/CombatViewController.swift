@@ -235,7 +235,7 @@ final class CombatViewController: UIViewController, CombatEngineDelegate, InputD
         case .tensionStart:
             audio.startAmbience()
         case .active:
-            audio.playRoundStart()
+            // No start sound — footsteps beginning is the cue
             audio.updatePlayerBreathing(hp: engine.state.player.hp)
             audio.updateEnemyBreathing(hp: engine.state.enemy.hp, destabilized: false)
             // Start heel-click footsteps — the primary proximity cue

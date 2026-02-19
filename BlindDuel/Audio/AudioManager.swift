@@ -246,26 +246,28 @@ final class AudioManager: AudioProviding {
         return footstepIsApproaching ? base * 0.6 : base
     }
     
-    /// Volume for footstep — smooth gradient from distance.
-    /// Far = quiet, close = loud.
+    /// Volume for footstep — wide dynamic range from distance.
+    /// Far = barely audible, close = loud and present.
     private func footstepVolume() -> Float {
         let t = max(0.0, min(1.0, footstepDistance))
-        // distance 0.0 → volume 0.95,  distance 1.0 → volume 0.15
-        return 0.95 - t * 0.80
+        // distance 0.0 → volume 1.0,  distance 1.0 → volume 0.05
+        // Use a curve (power of 1.5) so volume drops off faster at distance
+        let falloff = powf(t, 1.5)
+        return 1.0 - falloff * 0.95
     }
     
-    /// Z-depth for footstep — smooth gradient from distance.
+    /// Z-depth for footstep — wide spatial range.
     private func footstepZ() -> Float {
         let t = max(0.0, min(1.0, footstepDistance))
-        // distance 0.0 → z = -0.5, distance 1.0 → z = -6.0
-        return -0.5 - t * 5.5
+        // distance 0.0 → z = -0.3 (right in front), distance 1.0 → z = -10.0 (far away)
+        return -0.3 - t * 9.7
     }
     
-    /// Reverb blend — smooth gradient from distance.
+    /// Reverb blend — far = very reverberant, close = dry and sharp.
     private func footstepReverb() -> Float {
         let t = max(0.0, min(1.0, footstepDistance))
-        // distance 0.0 → 0.15 (dry/present), distance 1.0 → 0.55 (reverberant/far)
-        return 0.15 + t * 0.40
+        // distance 0.0 → 0.05 (bone dry), distance 1.0 → 0.7 (heavy room reverb)
+        return 0.05 + t * 0.65
     }
     
     /// Schedule the next footstep click.
