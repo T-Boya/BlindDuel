@@ -1,0 +1,57 @@
+name: BlindDuel
+options:
+  bundleIdPrefix: com.blindduel
+  deploymentTarget:
+    iOS: "15.0"
+  xcodeVersion: "15.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: true
+  groupSortPosition: top
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    TARGETED_DEVICE_FAMILY: "1"  # iPhone only
+    INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+    INFOPLIST_KEY_UILaunchScreen_Generation: YES
+    INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+    INFOPLIST_KEY_UIStatusBarHidden: YES
+
+targets:
+  BlindDuel:
+    type: application
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: BlindDuel
+        excludes:
+          - Testing/**
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.blindduel.app
+        PRODUCT_NAME: "Blind Duel"
+        CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_NSCameraUsageDescription: "Head gesture controls use the camera to track head movements"
+        INFOPLIST_KEY_UIBackgroundModes: "audio"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        GENERATE_INFOPLIST_FILE: YES
+    entitlements:
+      path: BlindDuel/App/BlindDuel.entitlements
+      properties: {}
+
+  BlindDuelTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: BlindDuelTests
+      - path: BlindDuel/Testing
+    dependencies:
+      - target: BlindDuel
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.blindduel.tests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Blind Duel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Blind Duel"
+        BUNDLE_LOADER: "$(TEST_HOST)"

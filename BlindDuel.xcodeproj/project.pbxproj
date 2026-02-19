@@ -1,0 +1,655 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D0156E17D293CE8DCA00F7F /* AudioAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC001FB909CA861DCAC0D4B /* AudioAssets.swift */; };
+		1D588C639C5F42E53EEE5DD0 /* CalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6B05FE1A216A3302AF8016 /* CalibrationViewController.swift */; };
+		1E3CEC7259B50135852656FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346CE89AFF7F32701CDB49A6 /* AppDelegate.swift */; };
+		300EDF074D78C93E6E8D857F /* MockHapticProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7CBA868A7C7874D1CBB7B1 /* MockHapticProvider.swift */; };
+		314A94DE42E300A0D7EAC331 /* HapticProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E85ED45513AECC8B680F6A /* HapticProviding.swift */; };
+		33B112BC36602022BD86B69E /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC087EE38AED5BE23BB16DA3 /* HapticManager.swift */; };
+		342D6441BBFCCD5BC1BFF200 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0EEA98B02227C25856ECA6 /* InputManager.swift */; };
+		354796AC0B0D8139AA6EF518 /* TouchInputProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FD5CDEFCD5E17668870C24 /* TouchInputProvider.swift */; };
+		45891271DB7D52D839B1E426 /* HapticPatterns.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461FBD8F23168C2DC1856FF /* HapticPatterns.swift */; };
+		4BF3A4029A1E51C6DBE1A198 /* CombatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65F4A71BE9B31A05AD0260 /* CombatViewController.swift */; };
+		560296804753D8CC41015897 /* CombatState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44CE1F2B3073E63387B08D /* CombatState.swift */; };
+		57520DF7E94BC076C07832F8 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5F0A0FB89E294C08F921B1 /* AudioManager.swift */; };
+		5804C7C345B6713D26120E4D /* SpatialSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE8A8004D879464480B8F6 /* SpatialSource.swift */; };
+		6C8781DF05CC6691C11780A8 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5BDA2353B0359DB3C3B492 /* Difficulty.swift */; };
+		74F4A604221DDBD0BE26E0F4 /* AudioProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6235F2C03612D9DFE710993 /* AudioProviding.swift */; };
+		763EF41C91B01E7EA7FA8075 /* MockGameLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC00A034774A323A4F0EC81A /* MockGameLoop.swift */; };
+		775996D13FD86BA27E4DAD81 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B658DB33AA4143FFC4E0AF10 /* ResultViewController.swift */; };
+		7C72558A485AB4A95AB7EF76 /* CombatEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B71BCBC067E0091FC7FBEC /* CombatEngineTests.swift */; };
+		7ED587D9E9D83D39F390F9D3 /* CombatEngineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E66BC6DFBCCEA7DE243FC7C /* CombatEngineDelegate.swift */; };
+		80F07CF4398D16A52FC4045D /* EasyAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79DBB4FD1A3E979D812F450 /* EasyAI.swift */; };
+		8375F96823B68F55D41C6FC3 /* HeadGestureInputProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62701228E7AF1DC364DCA380 /* HeadGestureInputProvider.swift */; };
+		873D6767E11BC039D5F67AD1 /* NormalAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB5E7A8D242E86390ECB649 /* NormalAI.swift */; };
+		892A621312F87E435E36FFC1 /* HardAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E32742E0C566E68B43A4EC9 /* HardAI.swift */; };
+		976E34BF4115CD9A7E904FA9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6771BBB8D3FB40FEFFA7E0 /* OnboardingViewController.swift */; };
+		9F18E966F7C85CDB63898903 /* CombatEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F8DDFCF9806154213CF7C3 /* CombatEngine.swift */; };
+		B0A9BAA97D313FC05EF6E436 /* EnemyBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7792EAFBDE2BC0BCA266EA /* EnemyBehavior.swift */; };
+		C5BEBB8DEB9C00860B39AD3E /* RangeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C4AAC0CF2FAC3D6A6556D /* RangeState.swift */; };
+		CB428CA7883EDCEB4E262755 /* GameLoopProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474B0D6E9FAA518A12324A2 /* GameLoopProviding.swift */; };
+		CD88B10A16F4E2390F272F2A /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA27B3E1B2AB20FD950027 /* DependencyContainer.swift */; };
+		DA23D3119AD39614F5BB9C9C /* InputProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97AE6F4DB93D349333A717D /* InputProviding.swift */; };
+		E330C855103D17FEEB2C3023 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA775402677134B948EA6A04 /* SceneDelegate.swift */; };
+		E512A3DA1A887DD8024AF325 /* Fighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C5CD724FE06650F05E593F /* Fighter.swift */; };
+		E55FC89652A016D9A3DBFD67 /* MockInputProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83B24A5E7D1228BE8CEE257 /* MockInputProvider.swift */; };
+		F0BA9E0553D1DE6E59FE5C29 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F853C31812CB4A1254025FB /* MenuViewController.swift */; };
+		F2FAE3B80045283D70B37D89 /* GameLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EE6B1CEA155B653EA46053 /* GameLoop.swift */; };
+		F8482FBC621243F01CAF4EB6 /* MockAudioProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869AF6B734BD2AD87E5AFDD0 /* MockAudioProvider.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		62C15D7FB115A8BA9FCACE1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33C6587ED5D46FE571B61335 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3EA8F1C4C5ABB3C41DC99EFA;
+			remoteInfo = BlindDuel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0474B0D6E9FAA518A12324A2 /* GameLoopProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLoopProviding.swift; sourceTree = "<group>"; };
+		0BC001FB909CA861DCAC0D4B /* AudioAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioAssets.swift; sourceTree = "<group>"; };
+		0E6771BBB8D3FB40FEFFA7E0 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		11C5CD724FE06650F05E593F /* Fighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fighter.swift; sourceTree = "<group>"; };
+		1E32742E0C566E68B43A4EC9 /* HardAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardAI.swift; sourceTree = "<group>"; };
+		1E7792EAFBDE2BC0BCA266EA /* EnemyBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyBehavior.swift; sourceTree = "<group>"; };
+		22427FB0AB82BE9B7DAC60DF /* BlindDuelTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BlindDuelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F853C31812CB4A1254025FB /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		346CE89AFF7F32701CDB49A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3A65F4A71BE9B31A05AD0260 /* CombatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatViewController.swift; sourceTree = "<group>"; };
+		3E66BC6DFBCCEA7DE243FC7C /* CombatEngineDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatEngineDelegate.swift; sourceTree = "<group>"; };
+		3F0EEA98B02227C25856ECA6 /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
+		41FD5CDEFCD5E17668870C24 /* TouchInputProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchInputProvider.swift; sourceTree = "<group>"; };
+		493C4AAC0CF2FAC3D6A6556D /* RangeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeState.swift; sourceTree = "<group>"; };
+		62701228E7AF1DC364DCA380 /* HeadGestureInputProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadGestureInputProvider.swift; sourceTree = "<group>"; };
+		65EE6B1CEA155B653EA46053 /* GameLoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLoop.swift; sourceTree = "<group>"; };
+		6AE249F54624F0ACB02872EC /* BlindDuel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BlindDuel.entitlements; sourceTree = "<group>"; };
+		6C5BDA2353B0359DB3C3B492 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
+		6FB5E7A8D242E86390ECB649 /* NormalAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalAI.swift; sourceTree = "<group>"; };
+		79B71BCBC067E0091FC7FBEC /* CombatEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatEngineTests.swift; sourceTree = "<group>"; };
+		7C6B05FE1A216A3302AF8016 /* CalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationViewController.swift; sourceTree = "<group>"; };
+		869AF6B734BD2AD87E5AFDD0 /* MockAudioProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAudioProvider.swift; sourceTree = "<group>"; };
+		A6235F2C03612D9DFE710993 /* AudioProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioProviding.swift; sourceTree = "<group>"; };
+		AD5F0A0FB89E294C08F921B1 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		AFDA27B3E1B2AB20FD950027 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		B4EE8A8004D879464480B8F6 /* SpatialSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialSource.swift; sourceTree = "<group>"; };
+		B658DB33AA4143FFC4E0AF10 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		B83B24A5E7D1228BE8CEE257 /* MockInputProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockInputProvider.swift; sourceTree = "<group>"; };
+		BB7CBA868A7C7874D1CBB7B1 /* MockHapticProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHapticProvider.swift; sourceTree = "<group>"; };
+		CA44CE1F2B3073E63387B08D /* CombatState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatState.swift; sourceTree = "<group>"; };
+		CA775402677134B948EA6A04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CC087EE38AED5BE23BB16DA3 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		DFFE63853B6BAAC120E29E88 /* BlindDuel.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BlindDuel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2E85ED45513AECC8B680F6A /* HapticProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticProviding.swift; sourceTree = "<group>"; };
+		E461FBD8F23168C2DC1856FF /* HapticPatterns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticPatterns.swift; sourceTree = "<group>"; };
+		E5F8DDFCF9806154213CF7C3 /* CombatEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatEngine.swift; sourceTree = "<group>"; };
+		E97AE6F4DB93D349333A717D /* InputProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputProviding.swift; sourceTree = "<group>"; };
+		EC00A034774A323A4F0EC81A /* MockGameLoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameLoop.swift; sourceTree = "<group>"; };
+		F79DBB4FD1A3E979D812F450 /* EasyAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyAI.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0097CFE6A1DF98034F00984C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7C6B05FE1A216A3302AF8016 /* CalibrationViewController.swift */,
+				3A65F4A71BE9B31A05AD0260 /* CombatViewController.swift */,
+				2F853C31812CB4A1254025FB /* MenuViewController.swift */,
+				0E6771BBB8D3FB40FEFFA7E0 /* OnboardingViewController.swift */,
+				B658DB33AA4143FFC4E0AF10 /* ResultViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		17DC579B7643716CF7E966AE /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				62701228E7AF1DC364DCA380 /* HeadGestureInputProvider.swift */,
+				41FD5CDEFCD5E17668870C24 /* TouchInputProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		28EF43C24E20D6CF2F8BC428 /* Haptics */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Haptics;
+			sourceTree = "<group>";
+		};
+		3482292B6E4BAF4F36FBB8C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DFFE63853B6BAAC120E29E88 /* BlindDuel.app */,
+				22427FB0AB82BE9B7DAC60DF /* BlindDuelTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3D4DE9E1E5BDB5B2BEF67C23 /* Haptics */ = {
+			isa = PBXGroup;
+			children = (
+				CC087EE38AED5BE23BB16DA3 /* HapticManager.swift */,
+				E461FBD8F23168C2DC1856FF /* HapticPatterns.swift */,
+			);
+			path = Haptics;
+			sourceTree = "<group>";
+		};
+		4A3763D12C2FFE82D0F4096E /* BlindDuelTests */ = {
+			isa = PBXGroup;
+			children = (
+				79B71BCBC067E0091FC7FBEC /* CombatEngineTests.swift */,
+			);
+			path = BlindDuelTests;
+			sourceTree = "<group>";
+		};
+		6A60F7A98FEC50B873054193 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		8744486FF14DA72416B1C6CA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				346CE89AFF7F32701CDB49A6 /* AppDelegate.swift */,
+				6AE249F54624F0ACB02872EC /* BlindDuel.entitlements */,
+				AFDA27B3E1B2AB20FD950027 /* DependencyContainer.swift */,
+				CA775402677134B948EA6A04 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9830313106DA7E2D873E545F /* BlindDuel */ = {
+			isa = PBXGroup;
+			children = (
+				8744486FF14DA72416B1C6CA /* App */,
+				E9523BAED96DB0A536176CF9 /* Audio */,
+				0097CFE6A1DF98034F00984C /* Controllers */,
+				BCB4964F7D893CE071762C52 /* Engine */,
+				3D4DE9E1E5BDB5B2BEF67C23 /* Haptics */,
+				E9F68CCCAE2C41BE4D12EAA1 /* Input */,
+				FF7272B7F44BE1466EEA20FF /* Models */,
+				DBC9538C5E8AEFA627726050 /* Protocols */,
+				B54A65240A748DDD491F4CDE /* Resources */,
+				D8FAFF8FC150E4F61CBE6E5E /* Testing */,
+			);
+			path = BlindDuel;
+			sourceTree = "<group>";
+		};
+		B54A65240A748DDD491F4CDE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				28EF43C24E20D6CF2F8BC428 /* Haptics */,
+				6A60F7A98FEC50B873054193 /* Sounds */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BCB4964F7D893CE071762C52 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				C78F21E14FA4EE368B65E590 /* AI */,
+				E5F8DDFCF9806154213CF7C3 /* CombatEngine.swift */,
+				65EE6B1CEA155B653EA46053 /* GameLoop.swift */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		C78F21E14FA4EE368B65E590 /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				F79DBB4FD1A3E979D812F450 /* EasyAI.swift */,
+				1E32742E0C566E68B43A4EC9 /* HardAI.swift */,
+				6FB5E7A8D242E86390ECB649 /* NormalAI.swift */,
+			);
+			path = AI;
+			sourceTree = "<group>";
+		};
+		D8FAFF8FC150E4F61CBE6E5E /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				869AF6B734BD2AD87E5AFDD0 /* MockAudioProvider.swift */,
+				EC00A034774A323A4F0EC81A /* MockGameLoop.swift */,
+				BB7CBA868A7C7874D1CBB7B1 /* MockHapticProvider.swift */,
+				B83B24A5E7D1228BE8CEE257 /* MockInputProvider.swift */,
+			);
+			path = Testing;
+			sourceTree = "<group>";
+		};
+		DBC9538C5E8AEFA627726050 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A6235F2C03612D9DFE710993 /* AudioProviding.swift */,
+				3E66BC6DFBCCEA7DE243FC7C /* CombatEngineDelegate.swift */,
+				1E7792EAFBDE2BC0BCA266EA /* EnemyBehavior.swift */,
+				0474B0D6E9FAA518A12324A2 /* GameLoopProviding.swift */,
+				E2E85ED45513AECC8B680F6A /* HapticProviding.swift */,
+				E97AE6F4DB93D349333A717D /* InputProviding.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		DD516A4640240EFF96920D2C = {
+			isa = PBXGroup;
+			children = (
+				9830313106DA7E2D873E545F /* BlindDuel */,
+				4A3763D12C2FFE82D0F4096E /* BlindDuelTests */,
+				3482292B6E4BAF4F36FBB8C3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E9523BAED96DB0A536176CF9 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				0BC001FB909CA861DCAC0D4B /* AudioAssets.swift */,
+				AD5F0A0FB89E294C08F921B1 /* AudioManager.swift */,
+				B4EE8A8004D879464480B8F6 /* SpatialSource.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		E9F68CCCAE2C41BE4D12EAA1 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				17DC579B7643716CF7E966AE /* Providers */,
+				3F0EEA98B02227C25856ECA6 /* InputManager.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		FF7272B7F44BE1466EEA20FF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CA44CE1F2B3073E63387B08D /* CombatState.swift */,
+				6C5BDA2353B0359DB3C3B492 /* Difficulty.swift */,
+				11C5CD724FE06650F05E593F /* Fighter.swift */,
+				493C4AAC0CF2FAC3D6A6556D /* RangeState.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2900CA488F1774AD1651FADB /* BlindDuelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 074338A2FCF8A0FD5923A6FE /* Build configuration list for PBXNativeTarget "BlindDuelTests" */;
+			buildPhases = (
+				EC8375AEDAE1A19659E563D2 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF942B50369C903C53E16BA3 /* PBXTargetDependency */,
+			);
+			name = BlindDuelTests;
+			packageProductDependencies = (
+			);
+			productName = BlindDuelTests;
+			productReference = 22427FB0AB82BE9B7DAC60DF /* BlindDuelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3EA8F1C4C5ABB3C41DC99EFA /* BlindDuel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 805172C389072E42AC72C83B /* Build configuration list for PBXNativeTarget "BlindDuel" */;
+			buildPhases = (
+				B5553DD5E1AD087F363F4231 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BlindDuel;
+			packageProductDependencies = (
+			);
+			productName = BlindDuel;
+			productReference = DFFE63853B6BAAC120E29E88 /* BlindDuel.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		33C6587ED5D46FE571B61335 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = 695D770D127584019B160CDD /* Build configuration list for PBXProject "BlindDuel" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = DD516A4640240EFF96920D2C;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3EA8F1C4C5ABB3C41DC99EFA /* BlindDuel */,
+				2900CA488F1774AD1651FADB /* BlindDuelTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B5553DD5E1AD087F363F4231 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E3CEC7259B50135852656FA /* AppDelegate.swift in Sources */,
+				0D0156E17D293CE8DCA00F7F /* AudioAssets.swift in Sources */,
+				57520DF7E94BC076C07832F8 /* AudioManager.swift in Sources */,
+				74F4A604221DDBD0BE26E0F4 /* AudioProviding.swift in Sources */,
+				1D588C639C5F42E53EEE5DD0 /* CalibrationViewController.swift in Sources */,
+				9F18E966F7C85CDB63898903 /* CombatEngine.swift in Sources */,
+				7ED587D9E9D83D39F390F9D3 /* CombatEngineDelegate.swift in Sources */,
+				560296804753D8CC41015897 /* CombatState.swift in Sources */,
+				4BF3A4029A1E51C6DBE1A198 /* CombatViewController.swift in Sources */,
+				CD88B10A16F4E2390F272F2A /* DependencyContainer.swift in Sources */,
+				6C8781DF05CC6691C11780A8 /* Difficulty.swift in Sources */,
+				80F07CF4398D16A52FC4045D /* EasyAI.swift in Sources */,
+				B0A9BAA97D313FC05EF6E436 /* EnemyBehavior.swift in Sources */,
+				E512A3DA1A887DD8024AF325 /* Fighter.swift in Sources */,
+				F2FAE3B80045283D70B37D89 /* GameLoop.swift in Sources */,
+				CB428CA7883EDCEB4E262755 /* GameLoopProviding.swift in Sources */,
+				33B112BC36602022BD86B69E /* HapticManager.swift in Sources */,
+				45891271DB7D52D839B1E426 /* HapticPatterns.swift in Sources */,
+				314A94DE42E300A0D7EAC331 /* HapticProviding.swift in Sources */,
+				892A621312F87E435E36FFC1 /* HardAI.swift in Sources */,
+				8375F96823B68F55D41C6FC3 /* HeadGestureInputProvider.swift in Sources */,
+				342D6441BBFCCD5BC1BFF200 /* InputManager.swift in Sources */,
+				DA23D3119AD39614F5BB9C9C /* InputProviding.swift in Sources */,
+				F0BA9E0553D1DE6E59FE5C29 /* MenuViewController.swift in Sources */,
+				873D6767E11BC039D5F67AD1 /* NormalAI.swift in Sources */,
+				976E34BF4115CD9A7E904FA9 /* OnboardingViewController.swift in Sources */,
+				C5BEBB8DEB9C00860B39AD3E /* RangeState.swift in Sources */,
+				775996D13FD86BA27E4DAD81 /* ResultViewController.swift in Sources */,
+				E330C855103D17FEEB2C3023 /* SceneDelegate.swift in Sources */,
+				5804C7C345B6713D26120E4D /* SpatialSource.swift in Sources */,
+				354796AC0B0D8139AA6EF518 /* TouchInputProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC8375AEDAE1A19659E563D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C72558A485AB4A95AB7EF76 /* CombatEngineTests.swift in Sources */,
+				F8482FBC621243F01CAF4EB6 /* MockAudioProvider.swift in Sources */,
+				763EF41C91B01E7EA7FA8075 /* MockGameLoop.swift in Sources */,
+				300EDF074D78C93E6E8D857F /* MockHapticProvider.swift in Sources */,
+				E55FC89652A016D9A3DBFD67 /* MockInputProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CF942B50369C903C53E16BA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3EA8F1C4C5ABB3C41DC99EFA /* BlindDuel */;
+			targetProxy = 62C15D7FB115A8BA9FCACE1A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		32F522B2530BDD47E97C72C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION = YES;
+				CODE_SIGN_ENTITLEMENTS = BlindDuel/App/BlindDuel.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Head gesture controls use the camera to track head movements";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UIBackgroundModes = audio;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.blindduel.app;
+				PRODUCT_NAME = "Blind Duel";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		39F6CE92CA738B5A7C7A97D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.blindduel.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blind Duel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Blind Duel";
+			};
+			name = Debug;
+		};
+		950935B129348E1161D50940 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		C704588DB63371484C3B2831 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.blindduel.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blind Duel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Blind Duel";
+			};
+			name = Release;
+		};
+		D29ED85110E4AA2E80C7E0CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION = YES;
+				CODE_SIGN_ENTITLEMENTS = BlindDuel/App/BlindDuel.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Head gesture controls use the camera to track head movements";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UIBackgroundModes = audio;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.blindduel.app;
+				PRODUCT_NAME = "Blind Duel";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DE709BFDD977593AB89FEDC5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		074338A2FCF8A0FD5923A6FE /* Build configuration list for PBXNativeTarget "BlindDuelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39F6CE92CA738B5A7C7A97D8 /* Debug */,
+				C704588DB63371484C3B2831 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		695D770D127584019B160CDD /* Build configuration list for PBXProject "BlindDuel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE709BFDD977593AB89FEDC5 /* Debug */,
+				950935B129348E1161D50940 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		805172C389072E42AC72C83B /* Build configuration list for PBXNativeTarget "BlindDuel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32F522B2530BDD47E97C72C2 /* Debug */,
+				D29ED85110E4AA2E80C7E0CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 33C6587ED5D46FE571B61335 /* Project object */;
+}
