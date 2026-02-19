@@ -27,6 +27,10 @@ final class AudioManager: AudioProviding {
     private let enemyStrikeSource = SpatialSource()
     private let enemyHitSource = SpatialSource()
     
+    // Enemy footstep sources (heel clicks, alternated for natural variation)
+    private let footstepSourceA = SpatialSource()
+    private let footstepSourceB = SpatialSource()
+    
     // Ambience
     private let ambienceSource = SpatialSource()
     private let roundStartSource = SpatialSource()
@@ -36,6 +40,26 @@ final class AudioManager: AudioProviding {
     
     private var isRunning = false
     private var currentPlayerHP = 3
+    
+    // MARK: - Footstep Scheduling State
+    
+    /// Timer that fires each footstep click.
+    private var footstepTimer: Timer?
+    
+    /// Alternates between the two click samples.
+    private var footstepUseAlt = false
+    
+    /// Current target x-position the footstep wanders toward.
+    private var footstepTargetX: Float = 0
+    
+    /// Current actual x-position (smoothed toward target).
+    private var footstepCurrentX: Float = 0
+    
+    /// Current range cached for footstep parameter calculations.
+    private var footstepRange: RangeState = .far
+    
+    /// Whether the enemy is actively approaching (running tempo).
+    private var footstepIsApproaching = false
     
     // MARK: - Position Mapping
     
@@ -173,6 +197,100 @@ final class AudioManager: AudioProviding {
         }
     }
     
+    // MARK: - Enemy Footsteps
+    
+    func startEnemyFootsteps() {
+        guard footstepTimer == nil else { return }
+        footstepCurrentX = 0
+        footstepTargetX = Float.random(in: -1.0...1.0)
+        scheduleNextFootstep()
+    }
+    
+    func stopEnemyFootsteps() {
+        footstepTimer?.invalidate()
+        footstepTimer = nil
+        footstepSourceA.stop()
+        footstepSourceB.stop()
+    }
+    
+    func updateEnemyFootsteps(range: RangeState, direction: Float, isApproaching: Bool) {
+        footstepRange = range
+        footstepIsApproaching = isApproaching
+        // Nudge target toward the enemy's actual direction but add randomness
+        footstepTargetX = direction + Float.random(in: -0.4...0.4)
+        footstepTargetX = max(-1.0, min(1.0, footstepTargetX))
+    }
+    
+    // MARK: - Private Footstep Scheduling
+    
+    /// Interval between heel clicks based on range and approach state.
+    private func footstepInterval() -> TimeInterval {
+        let base: TimeInterval
+        switch footstepRange {
+        case .far:  base = 1.1   // slow, measured heel-click walk
+        case .mid:  base = 0.65  // moderate pace
+        case .close: base = 0.38 // quick steps
+        }
+        // Running: halve the interval
+        return footstepIsApproaching ? base * 0.5 : base
+    }
+    
+    /// Volume for footstep based on range.
+    private func footstepVolume() -> Float {
+        switch footstepRange {
+        case .far:   return 0.25
+        case .mid:   return 0.55
+        case .close: return 0.90
+        }
+    }
+    
+    /// Z-depth for footstep (matches enemy positioning).
+    private func footstepZ() -> Float {
+        zPosition(for: footstepRange)
+    }
+    
+    /// Schedule the next footstep click.
+    private func scheduleNextFootstep() {
+        let interval = footstepInterval()
+        footstepTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: false) { [weak self] _ in
+            self?.fireFootstep()
+        }
+    }
+    
+    /// Play one heel click and schedule the next.
+    private func fireFootstep() {
+        // Drift the position toward the wandering target
+        let drift: Float = 0.15
+        if footstepCurrentX < footstepTargetX {
+            footstepCurrentX = min(footstepCurrentX + drift, footstepTargetX)
+        } else {
+            footstepCurrentX = max(footstepCurrentX - drift, footstepTargetX)
+        }
+        
+        // Occasionally pick a new random target (simulating unpredictable movement)
+        if Float.random(in: 0...1) < 0.35 {
+            footstepTargetX = Float.random(in: -1.0...1.0)
+        }
+        
+        let z = footstepZ()
+        let x = footstepCurrentX * 2.0 // Scale to spatial width
+        let position = AVAudio3DPoint(x: x, y: 0, z: z)
+        let reverb = reverbBlend(for: footstepRange)
+        let vol = footstepVolume()
+        
+        // Pick the source and alternate
+        let source = footstepUseAlt ? footstepSourceB : footstepSourceA
+        footstepUseAlt.toggle()
+        
+        source.position = position
+        source.reverbBlend = reverb
+        source.volume = vol
+        source.playOnce()
+        
+        // Schedule the next click
+        scheduleNextFootstep()
+    }
+    
     // MARK: - Ambience & Round
     
     func startAmbience() {
@@ -192,6 +310,7 @@ final class AudioManager: AudioProviding {
         playerBreathSource.stop()
         playerHeartbeatSource.stop()
         enemyBreathSource.stop()
+        stopEnemyFootsteps()
         
         if won {
             roundEndSource.loadBuffer(named: AudioAssets.roundWin)
@@ -222,6 +341,15 @@ final class AudioManager: AudioProviding {
             attachSource(source)
         }
         
+        // Footstep sources: positional, reverberant, HRTFHQ (wandering heel clicks)
+        let footstepSources = [footstepSourceA, footstepSourceB]
+        for source in footstepSources {
+            source.position = AVAudio3DPoint(x: 0, y: 0, z: -5.0)
+            source.reverbBlend = 0.5
+            source.renderingAlgorithm = .HRTFHQ
+            attachSource(source)
+        }
+        
         // Ambience/UI sources: centered, slight reverb
         let uiSources = [ambienceSource, roundStartSource, roundEndSource]
         for source in uiSources {
@@ -241,6 +369,9 @@ final class AudioManager: AudioProviding {
         enemyTellSource.loadBuffer(named: AudioAssets.enemyTellInhale)
         enemyStrikeSource.loadBuffer(named: AudioAssets.enemyStrikeWhoosh)
         enemyHitSource.loadBuffer(named: AudioAssets.enemyHitGrunt)
+        
+        footstepSourceA.loadBuffer(named: AudioAssets.enemyFootstep)
+        footstepSourceB.loadBuffer(named: AudioAssets.enemyFootstepAlt)
         
         ambienceSource.loadBuffer(named: AudioAssets.ambientRoomTone)
         roundStartSource.loadBuffer(named: AudioAssets.roundStartTone)

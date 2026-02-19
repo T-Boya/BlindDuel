@@ -25,6 +25,14 @@ final class CombatViewController: UIViewController, CombatEngineDelegate, InputD
     private var headphonePauseOverlay: UIView?
     private var isPausedForHeadphones = false
     
+    // MARK: - Footstep Approach Tracking
+    
+    /// True when the enemy just advanced closer (triggers running tempo).
+    private var isEnemyApproaching = false
+    
+    /// Tracks the previous range so we can detect approaches.
+    private var previousRange: RangeState = .far
+    
     // MARK: - Init
     
     init(
@@ -156,6 +164,19 @@ final class CombatViewController: UIViewController, CombatEngineDelegate, InputD
     func combatEngine(_ engine: CombatEngine, rangeDidChange newRange: RangeState) {
         audio.updateEnemyPosition(range: newRange, direction: engine.state.enemyDirection)
         
+        // Detect approach (enemy moved closer) → trigger running footstep tempo
+        if newRange > previousRange {
+            isEnemyApproaching = true
+            // Clear approach flag after 1.5s (run resolves into walking)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+                self?.isEnemyApproaching = false
+            }
+        }
+        previousRange = newRange
+        
+        // Update footstep parameters for the new range
+        audio.updateEnemyFootsteps(range: newRange, direction: engine.state.enemyDirection, isApproaching: isEnemyApproaching)
+        
         // Update proximity rumble
         switch newRange {
         case .far:
@@ -187,6 +208,9 @@ final class CombatViewController: UIViewController, CombatEngineDelegate, InputD
         haptics.stopHeartbeat()
         haptics.stopProximityRumble()
         
+        // Stop footsteps
+        audio.stopEnemyFootsteps()
+        
         // Play result feedback
         audio.playRoundEnd(won: result == .playerWon)
         haptics.playRoundResult(won: result == .playerWon)
@@ -203,6 +227,7 @@ final class CombatViewController: UIViewController, CombatEngineDelegate, InputD
     
     func combatEngine(_ engine: CombatEngine, enemyPositionUpdated range: RangeState, direction: Float) {
         audio.updateEnemyPosition(range: range, direction: direction)
+        audio.updateEnemyFootsteps(range: range, direction: direction, isApproaching: isEnemyApproaching)
     }
     
     func combatEngine(_ engine: CombatEngine, phaseDidChange phase: RoundPhase) {
@@ -213,8 +238,12 @@ final class CombatViewController: UIViewController, CombatEngineDelegate, InputD
             audio.playRoundStart()
             audio.updatePlayerBreathing(hp: engine.state.player.hp)
             audio.updateEnemyBreathing(hp: engine.state.enemy.hp, destabilized: false)
+            // Start heel-click footsteps — the primary proximity cue
+            audio.startEnemyFootsteps()
+            audio.updateEnemyFootsteps(range: engine.state.range, direction: engine.state.enemyDirection, isApproaching: false)
         case .resolved:
             audio.stopAmbience()
+            audio.stopEnemyFootsteps()
         }
     }
     

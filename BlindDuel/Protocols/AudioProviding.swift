@@ -45,6 +45,22 @@ protocol AudioProviding: AnyObject {
     /// Breathing degrades as HP drops; heartbeat added at 1 HP.
     func updatePlayerBreathing(hp: Int)
     
+    // MARK: - Enemy Footsteps
+    
+    /// Start the heel-click footstep loop for the enemy.
+    /// Clicks pan left-right unpredictably and speed up as the enemy nears.
+    func startEnemyFootsteps()
+    
+    /// Stop the footstep loop.
+    func stopEnemyFootsteps()
+    
+    /// Update footstep tempo, volume, and spatial position.
+    /// - Parameters:
+    ///   - range: Current distance between fighters.
+    ///   - direction: Enemy's lateral position in [-1, 1].
+    ///   - isApproaching: True when the enemy is actively moving closer (run).
+    func updateEnemyFootsteps(range: RangeState, direction: Float, isApproaching: Bool)
+    
     // MARK: - Ambience & Round Flow
     
     /// Start the ambient room tone for tension.

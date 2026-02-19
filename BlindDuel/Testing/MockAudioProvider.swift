@@ -17,6 +17,9 @@ final class MockAudioProvider: AudioProviding {
         case playPlayerHit
         case playPlayerBlock
         case updatePlayerBreathing(hp: Int)
+        case startEnemyFootsteps
+        case stopEnemyFootsteps
+        case updateEnemyFootsteps(range: RangeState, direction: Float, isApproaching: Bool)
         case startAmbience
         case stopAmbience
         case playRoundStart
@@ -50,4 +53,10 @@ final class MockAudioProvider: AudioProviding {
     func stopAmbience() { calls.append(.stopAmbience) }
     func playRoundStart() { calls.append(.playRoundStart) }
     func playRoundEnd(won: Bool) { calls.append(.playRoundEnd(won: won)) }
+    
+    func startEnemyFootsteps() { calls.append(.startEnemyFootsteps) }
+    func stopEnemyFootsteps() { calls.append(.stopEnemyFootsteps) }
+    func updateEnemyFootsteps(range: RangeState, direction: Float, isApproaching: Bool) {
+        calls.append(.updateEnemyFootsteps(range: range, direction: direction, isApproaching: isApproaching))
+    }
 }

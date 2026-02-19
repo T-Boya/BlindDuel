@@ -16,6 +16,8 @@ enum AudioAssets {
     static let enemyTellScrape = "enemy_tell_scrape"
     static let enemyStrikeWhoosh = "enemy_strike_whoosh"
     static let enemyHitGrunt = "enemy_hit_grunt"
+    static let enemyFootstep = "enemy_footstep"
+    static let enemyFootstepAlt = "enemy_footstep_alt"
     
     // MARK: - Impact Sounds
     static let impactHit = "impact_hit"
