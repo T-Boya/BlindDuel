@@ -24,3 +24,4 @@ Packages/
 
 # macOS
 .DS_Store
+generate_audio.py

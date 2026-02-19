@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		088844CD287F790618A8C67D /* enemy_tell_inhale.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6BF487B24F0491F3B8B96958 /* enemy_tell_inhale.caf */; };
 		0D0156E17D293CE8DCA00F7F /* AudioAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC001FB909CA861DCAC0D4B /* AudioAssets.swift */; };
+		1C164B0EAB59BBAB9BCB1A9A /* calibration_left.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1AB91155533107F6C93E7AB8 /* calibration_left.caf */; };
+		1CFC9CE093F59BF61F84CD2B /* ambient_room_tone.caf in Resources */ = {isa = PBXBuildFile; fileRef = CDED313A1A8CBE441D747544 /* ambient_room_tone.caf */; };
 		1D588C639C5F42E53EEE5DD0 /* CalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6B05FE1A216A3302AF8016 /* CalibrationViewController.swift */; };
 		1E3CEC7259B50135852656FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346CE89AFF7F32701CDB49A6 /* AppDelegate.swift */; };
+		1F298B260711599AD852FC96 /* player_breath_healthy.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1AA282FCD81B4AF874538B61 /* player_breath_healthy.caf */; };
 		300EDF074D78C93E6E8D857F /* MockHapticProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7CBA868A7C7874D1CBB7B1 /* MockHapticProvider.swift */; };
 		314A94DE42E300A0D7EAC331 /* HapticProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E85ED45513AECC8B680F6A /* HapticProviding.swift */; };
 		33B112BC36602022BD86B69E /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC087EE38AED5BE23BB16DA3 /* HapticManager.swift */; };
@@ -17,29 +21,43 @@
 		354796AC0B0D8139AA6EF518 /* TouchInputProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FD5CDEFCD5E17668870C24 /* TouchInputProvider.swift */; };
 		45891271DB7D52D839B1E426 /* HapticPatterns.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461FBD8F23168C2DC1856FF /* HapticPatterns.swift */; };
 		4BF3A4029A1E51C6DBE1A198 /* CombatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65F4A71BE9B31A05AD0260 /* CombatViewController.swift */; };
+		4F8DD5A750753E0C7201D03B /* enemy_breath.caf in Resources */ = {isa = PBXBuildFile; fileRef = E369360258E8D94FCD497B4D /* enemy_breath.caf */; };
 		560296804753D8CC41015897 /* CombatState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44CE1F2B3073E63387B08D /* CombatState.swift */; };
 		57520DF7E94BC076C07832F8 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5F0A0FB89E294C08F921B1 /* AudioManager.swift */; };
 		5804C7C345B6713D26120E4D /* SpatialSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EE8A8004D879464480B8F6 /* SpatialSource.swift */; };
+		5DD2E7EA07ECDB4DD7EB3235 /* enemy_strike_whoosh.caf in Resources */ = {isa = PBXBuildFile; fileRef = 06E6DCDB529EC692F57A09AA /* enemy_strike_whoosh.caf */; };
+		6665309AD57CEDED5E5BF0A7 /* calibration_right.caf in Resources */ = {isa = PBXBuildFile; fileRef = D62E62BC59B875D7D8E8BC86 /* calibration_right.caf */; };
 		6C8781DF05CC6691C11780A8 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5BDA2353B0359DB3C3B492 /* Difficulty.swift */; };
 		74F4A604221DDBD0BE26E0F4 /* AudioProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6235F2C03612D9DFE710993 /* AudioProviding.swift */; };
 		763EF41C91B01E7EA7FA8075 /* MockGameLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC00A034774A323A4F0EC81A /* MockGameLoop.swift */; };
 		775996D13FD86BA27E4DAD81 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B658DB33AA4143FFC4E0AF10 /* ResultViewController.swift */; };
 		7C72558A485AB4A95AB7EF76 /* CombatEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B71BCBC067E0091FC7FBEC /* CombatEngineTests.swift */; };
 		7ED587D9E9D83D39F390F9D3 /* CombatEngineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E66BC6DFBCCEA7DE243FC7C /* CombatEngineDelegate.swift */; };
+		7F503E274E78735ABE43829B /* player_hit_grunt.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1C9FBD2C1CE5432122BD1C1F /* player_hit_grunt.caf */; };
 		80F07CF4398D16A52FC4045D /* EasyAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79DBB4FD1A3E979D812F450 /* EasyAI.swift */; };
 		8375F96823B68F55D41C6FC3 /* HeadGestureInputProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62701228E7AF1DC364DCA380 /* HeadGestureInputProvider.swift */; };
 		873D6767E11BC039D5F67AD1 /* NormalAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB5E7A8D242E86390ECB649 /* NormalAI.swift */; };
 		892A621312F87E435E36FFC1 /* HardAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E32742E0C566E68B43A4EC9 /* HardAI.swift */; };
+		8A3A4B333FE5BF9406530148 /* round_win.caf in Resources */ = {isa = PBXBuildFile; fileRef = 121D2C60E95F4E61C0A196AD /* round_win.caf */; };
 		976E34BF4115CD9A7E904FA9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6771BBB8D3FB40FEFFA7E0 /* OnboardingViewController.swift */; };
+		99B3DD961AC4CDA8EF09F24C /* player_block.caf in Resources */ = {isa = PBXBuildFile; fileRef = A087AECD0BD64BAE2C97335C /* player_block.caf */; };
+		9AF9FB684A344E4E3D19F5D7 /* player_heartbeat.caf in Resources */ = {isa = PBXBuildFile; fileRef = E5787EFE83F7EB744B466F1B /* player_heartbeat.caf */; };
 		9F18E966F7C85CDB63898903 /* CombatEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F8DDFCF9806154213CF7C3 /* CombatEngine.swift */; };
+		9FC357EE3A909B38991F6FDB /* player_breath_hurt.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2CDA6E6884D89A3B4EE665B7 /* player_breath_hurt.caf */; };
+		AF2692CC2BC10449B3B8A5CD /* enemy_tell_scrape.caf in Resources */ = {isa = PBXBuildFile; fileRef = C8563E99DDD7C5FD8DFD5A6E /* enemy_tell_scrape.caf */; };
+		B0A0549CDCB21B2BDDE63FB8 /* enemy_hit_grunt.caf in Resources */ = {isa = PBXBuildFile; fileRef = B9B9F62E5C801778906C9996 /* enemy_hit_grunt.caf */; };
 		B0A9BAA97D313FC05EF6E436 /* EnemyBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7792EAFBDE2BC0BCA266EA /* EnemyBehavior.swift */; };
+		B5EEA70F79DB026B54B911EC /* impact_hit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 66643430F557BA23D50D17E1 /* impact_hit.caf */; };
 		C5BEBB8DEB9C00860B39AD3E /* RangeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C4AAC0CF2FAC3D6A6556D /* RangeState.swift */; };
 		CB428CA7883EDCEB4E262755 /* GameLoopProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474B0D6E9FAA518A12324A2 /* GameLoopProviding.swift */; };
 		CD88B10A16F4E2390F272F2A /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA27B3E1B2AB20FD950027 /* DependencyContainer.swift */; };
+		CDD9B680AD92B2D920FE0DF2 /* round_start_tone.caf in Resources */ = {isa = PBXBuildFile; fileRef = 470AC3CE73E47714848E577C /* round_start_tone.caf */; };
 		DA23D3119AD39614F5BB9C9C /* InputProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97AE6F4DB93D349333A717D /* InputProviding.swift */; };
+		E00BCE4DC5403BCC03014689 /* round_lose.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7B9C89866326A4654BFDEE39 /* round_lose.caf */; };
 		E330C855103D17FEEB2C3023 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA775402677134B948EA6A04 /* SceneDelegate.swift */; };
 		E512A3DA1A887DD8024AF325 /* Fighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C5CD724FE06650F05E593F /* Fighter.swift */; };
 		E55FC89652A016D9A3DBFD67 /* MockInputProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83B24A5E7D1228BE8CEE257 /* MockInputProvider.swift */; };
+		EEC22828725A5D22171DA99B /* impact_block.caf in Resources */ = {isa = PBXBuildFile; fileRef = C32779F834D5334FF73E8CFC /* impact_block.caf */; };
 		F0BA9E0553D1DE6E59FE5C29 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F853C31812CB4A1254025FB /* MenuViewController.swift */; };
 		F2FAE3B80045283D70B37D89 /* GameLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EE6B1CEA155B653EA46053 /* GameLoop.swift */; };
 		F8482FBC621243F01CAF4EB6 /* MockAudioProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869AF6B734BD2AD87E5AFDD0 /* MockAudioProvider.swift */; };
@@ -57,40 +75,58 @@
 
 /* Begin PBXFileReference section */
 		0474B0D6E9FAA518A12324A2 /* GameLoopProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLoopProviding.swift; sourceTree = "<group>"; };
+		06E6DCDB529EC692F57A09AA /* enemy_strike_whoosh.caf */ = {isa = PBXFileReference; path = enemy_strike_whoosh.caf; sourceTree = "<group>"; };
 		0BC001FB909CA861DCAC0D4B /* AudioAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioAssets.swift; sourceTree = "<group>"; };
 		0E6771BBB8D3FB40FEFFA7E0 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		11C5CD724FE06650F05E593F /* Fighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fighter.swift; sourceTree = "<group>"; };
+		121D2C60E95F4E61C0A196AD /* round_win.caf */ = {isa = PBXFileReference; path = round_win.caf; sourceTree = "<group>"; };
+		1AA282FCD81B4AF874538B61 /* player_breath_healthy.caf */ = {isa = PBXFileReference; path = player_breath_healthy.caf; sourceTree = "<group>"; };
+		1AB91155533107F6C93E7AB8 /* calibration_left.caf */ = {isa = PBXFileReference; path = calibration_left.caf; sourceTree = "<group>"; };
+		1C9FBD2C1CE5432122BD1C1F /* player_hit_grunt.caf */ = {isa = PBXFileReference; path = player_hit_grunt.caf; sourceTree = "<group>"; };
 		1E32742E0C566E68B43A4EC9 /* HardAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardAI.swift; sourceTree = "<group>"; };
 		1E7792EAFBDE2BC0BCA266EA /* EnemyBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyBehavior.swift; sourceTree = "<group>"; };
 		22427FB0AB82BE9B7DAC60DF /* BlindDuelTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BlindDuelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CDA6E6884D89A3B4EE665B7 /* player_breath_hurt.caf */ = {isa = PBXFileReference; path = player_breath_hurt.caf; sourceTree = "<group>"; };
 		2F853C31812CB4A1254025FB /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		346CE89AFF7F32701CDB49A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A65F4A71BE9B31A05AD0260 /* CombatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatViewController.swift; sourceTree = "<group>"; };
 		3E66BC6DFBCCEA7DE243FC7C /* CombatEngineDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatEngineDelegate.swift; sourceTree = "<group>"; };
 		3F0EEA98B02227C25856ECA6 /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
 		41FD5CDEFCD5E17668870C24 /* TouchInputProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchInputProvider.swift; sourceTree = "<group>"; };
+		470AC3CE73E47714848E577C /* round_start_tone.caf */ = {isa = PBXFileReference; path = round_start_tone.caf; sourceTree = "<group>"; };
 		493C4AAC0CF2FAC3D6A6556D /* RangeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeState.swift; sourceTree = "<group>"; };
 		62701228E7AF1DC364DCA380 /* HeadGestureInputProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadGestureInputProvider.swift; sourceTree = "<group>"; };
 		65EE6B1CEA155B653EA46053 /* GameLoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLoop.swift; sourceTree = "<group>"; };
+		66643430F557BA23D50D17E1 /* impact_hit.caf */ = {isa = PBXFileReference; path = impact_hit.caf; sourceTree = "<group>"; };
 		6AE249F54624F0ACB02872EC /* BlindDuel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BlindDuel.entitlements; sourceTree = "<group>"; };
+		6BF487B24F0491F3B8B96958 /* enemy_tell_inhale.caf */ = {isa = PBXFileReference; path = enemy_tell_inhale.caf; sourceTree = "<group>"; };
 		6C5BDA2353B0359DB3C3B492 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
 		6FB5E7A8D242E86390ECB649 /* NormalAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalAI.swift; sourceTree = "<group>"; };
 		79B71BCBC067E0091FC7FBEC /* CombatEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatEngineTests.swift; sourceTree = "<group>"; };
+		7B9C89866326A4654BFDEE39 /* round_lose.caf */ = {isa = PBXFileReference; path = round_lose.caf; sourceTree = "<group>"; };
 		7C6B05FE1A216A3302AF8016 /* CalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationViewController.swift; sourceTree = "<group>"; };
 		869AF6B734BD2AD87E5AFDD0 /* MockAudioProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAudioProvider.swift; sourceTree = "<group>"; };
+		A087AECD0BD64BAE2C97335C /* player_block.caf */ = {isa = PBXFileReference; path = player_block.caf; sourceTree = "<group>"; };
 		A6235F2C03612D9DFE710993 /* AudioProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioProviding.swift; sourceTree = "<group>"; };
 		AD5F0A0FB89E294C08F921B1 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		AFDA27B3E1B2AB20FD950027 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		B4EE8A8004D879464480B8F6 /* SpatialSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialSource.swift; sourceTree = "<group>"; };
 		B658DB33AA4143FFC4E0AF10 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		B83B24A5E7D1228BE8CEE257 /* MockInputProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockInputProvider.swift; sourceTree = "<group>"; };
+		B9B9F62E5C801778906C9996 /* enemy_hit_grunt.caf */ = {isa = PBXFileReference; path = enemy_hit_grunt.caf; sourceTree = "<group>"; };
 		BB7CBA868A7C7874D1CBB7B1 /* MockHapticProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHapticProvider.swift; sourceTree = "<group>"; };
+		C32779F834D5334FF73E8CFC /* impact_block.caf */ = {isa = PBXFileReference; path = impact_block.caf; sourceTree = "<group>"; };
+		C8563E99DDD7C5FD8DFD5A6E /* enemy_tell_scrape.caf */ = {isa = PBXFileReference; path = enemy_tell_scrape.caf; sourceTree = "<group>"; };
 		CA44CE1F2B3073E63387B08D /* CombatState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatState.swift; sourceTree = "<group>"; };
 		CA775402677134B948EA6A04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CC087EE38AED5BE23BB16DA3 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		CDED313A1A8CBE441D747544 /* ambient_room_tone.caf */ = {isa = PBXFileReference; path = ambient_room_tone.caf; sourceTree = "<group>"; };
+		D62E62BC59B875D7D8E8BC86 /* calibration_right.caf */ = {isa = PBXFileReference; path = calibration_right.caf; sourceTree = "<group>"; };
 		DFFE63853B6BAAC120E29E88 /* BlindDuel.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BlindDuel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2E85ED45513AECC8B680F6A /* HapticProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticProviding.swift; sourceTree = "<group>"; };
+		E369360258E8D94FCD497B4D /* enemy_breath.caf */ = {isa = PBXFileReference; path = enemy_breath.caf; sourceTree = "<group>"; };
 		E461FBD8F23168C2DC1856FF /* HapticPatterns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticPatterns.swift; sourceTree = "<group>"; };
+		E5787EFE83F7EB744B466F1B /* player_heartbeat.caf */ = {isa = PBXFileReference; path = player_heartbeat.caf; sourceTree = "<group>"; };
 		E5F8DDFCF9806154213CF7C3 /* CombatEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatEngine.swift; sourceTree = "<group>"; };
 		E97AE6F4DB93D349333A717D /* InputProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputProviding.swift; sourceTree = "<group>"; };
 		EC00A034774A323A4F0EC81A /* MockGameLoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameLoop.swift; sourceTree = "<group>"; };
@@ -155,6 +191,24 @@
 		6A60F7A98FEC50B873054193 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				CDED313A1A8CBE441D747544 /* ambient_room_tone.caf */,
+				1AB91155533107F6C93E7AB8 /* calibration_left.caf */,
+				D62E62BC59B875D7D8E8BC86 /* calibration_right.caf */,
+				E369360258E8D94FCD497B4D /* enemy_breath.caf */,
+				B9B9F62E5C801778906C9996 /* enemy_hit_grunt.caf */,
+				06E6DCDB529EC692F57A09AA /* enemy_strike_whoosh.caf */,
+				6BF487B24F0491F3B8B96958 /* enemy_tell_inhale.caf */,
+				C8563E99DDD7C5FD8DFD5A6E /* enemy_tell_scrape.caf */,
+				C32779F834D5334FF73E8CFC /* impact_block.caf */,
+				66643430F557BA23D50D17E1 /* impact_hit.caf */,
+				A087AECD0BD64BAE2C97335C /* player_block.caf */,
+				1AA282FCD81B4AF874538B61 /* player_breath_healthy.caf */,
+				2CDA6E6884D89A3B4EE665B7 /* player_breath_hurt.caf */,
+				E5787EFE83F7EB744B466F1B /* player_heartbeat.caf */,
+				1C9FBD2C1CE5432122BD1C1F /* player_hit_grunt.caf */,
+				7B9C89866326A4654BFDEE39 /* round_lose.caf */,
+				470AC3CE73E47714848E577C /* round_start_tone.caf */,
+				121D2C60E95F4E61C0A196AD /* round_win.caf */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -305,6 +359,7 @@
 			buildConfigurationList = 805172C389072E42AC72C83B /* Build configuration list for PBXNativeTarget "BlindDuel" */;
 			buildPhases = (
 				B5553DD5E1AD087F363F4231 /* Sources */,
+				8AC0A1C9F89094FDCBBB0161 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -345,6 +400,34 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8AC0A1C9F89094FDCBBB0161 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CFC9CE093F59BF61F84CD2B /* ambient_room_tone.caf in Resources */,
+				1C164B0EAB59BBAB9BCB1A9A /* calibration_left.caf in Resources */,
+				6665309AD57CEDED5E5BF0A7 /* calibration_right.caf in Resources */,
+				4F8DD5A750753E0C7201D03B /* enemy_breath.caf in Resources */,
+				B0A0549CDCB21B2BDDE63FB8 /* enemy_hit_grunt.caf in Resources */,
+				5DD2E7EA07ECDB4DD7EB3235 /* enemy_strike_whoosh.caf in Resources */,
+				088844CD287F790618A8C67D /* enemy_tell_inhale.caf in Resources */,
+				AF2692CC2BC10449B3B8A5CD /* enemy_tell_scrape.caf in Resources */,
+				EEC22828725A5D22171DA99B /* impact_block.caf in Resources */,
+				B5EEA70F79DB026B54B911EC /* impact_hit.caf in Resources */,
+				99B3DD961AC4CDA8EF09F24C /* player_block.caf in Resources */,
+				1F298B260711599AD852FC96 /* player_breath_healthy.caf in Resources */,
+				9FC357EE3A909B38991F6FDB /* player_breath_hurt.caf in Resources */,
+				9AF9FB684A344E4E3D19F5D7 /* player_heartbeat.caf in Resources */,
+				7F503E274E78735ABE43829B /* player_hit_grunt.caf in Resources */,
+				E00BCE4DC5403BCC03014689 /* round_lose.caf in Resources */,
+				CDD9B680AD92B2D920FE0DF2 /* round_start_tone.caf in Resources */,
+				8A3A4B333FE5BF9406530148 /* round_win.caf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B5553DD5E1AD087F363F4231 /* Sources */ = {
