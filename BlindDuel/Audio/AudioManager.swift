@@ -247,11 +247,17 @@ final class AudioManager: AudioProviding {
         roundEndSource.loadBuffer(named: AudioAssets.roundWin)
     }
     
+    /// Mono format used for all spatial source connections.
+    /// AVAudioEnvironmentNode requires mono input for 3D spatialization.
+    private lazy var monoFormat: AVAudioFormat = {
+        AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 1)!
+    }()
+    
     /// Attach a spatial source's player node to the environment node.
     private func attachSource(_ source: SpatialSource) {
         engine.attach(source.playerNode)
-        // Connect to environment node — the environment handles spatialization + reverb
-        engine.connect(source.playerNode, to: environmentNode, format: nil)
+        // Connect with explicit mono format — environment node requires mono for spatialization
+        engine.connect(source.playerNode, to: environmentNode, format: monoFormat)
     }
     
     /// Update a source's position to match the current enemy direction/range.
