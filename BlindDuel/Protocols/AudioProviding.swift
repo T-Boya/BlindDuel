@@ -54,12 +54,12 @@ protocol AudioProviding: AnyObject {
     /// Stop the footstep loop.
     func stopEnemyFootsteps()
     
-    /// Update footstep tempo, volume, and spatial position.
+    /// Update footstep tempo, volume, and spatial position using continuous distance.
     /// - Parameters:
-    ///   - range: Current distance between fighters.
+    ///   - distance: Continuous distance 0.0 (melee) to 1.0 (far away).
     ///   - direction: Enemy's lateral position in [-1, 1].
     ///   - isApproaching: True when the enemy is actively moving closer (run).
-    func updateEnemyFootsteps(range: RangeState, direction: Float, isApproaching: Bool)
+    func updateEnemyFootsteps(distance: Float, direction: Float, isApproaching: Bool)
     
     // MARK: - Ambience & Round Flow
     

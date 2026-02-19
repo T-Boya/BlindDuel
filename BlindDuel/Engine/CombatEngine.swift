@@ -163,9 +163,12 @@ final class CombatEngine {
         if enemyStrikeActive {
             strikeWindowTimer -= deltaTime
             if strikeWindowTimer <= 0 {
-                // Strike window ended — attack missed or was blocked
+                // Strike window ended — player didn't block or dodge, they get hit
                 enemyStrikeActive = false
-                enterEnemyRecovery()
+                resolveEnemyHit()
+                if state.phase != .resolved {
+                    enterEnemyRecovery()
+                }
             }
         }
         
@@ -175,8 +178,20 @@ final class CombatEngine {
             if recoveryWindowTimer <= 0 {
                 enemyInRecovery = false
                 state.enemy.enter(state: .idle)
+                // After an attack, retreat before starting next approach
+                retreatAfterVolley()
                 scheduleNextEnemyAction()
             }
+        }
+        
+        // Update continuous enemy distance (smoothly interpolates toward range target)
+        let targetDistance = Self.targetDistance(for: state.range)
+        let lerpSpeed: Float = 2.5 // units per second
+        let maxStep = Float(deltaTime) * lerpSpeed
+        if state.enemyDistance < targetDistance {
+            state.enemyDistance = min(state.enemyDistance + maxStep, targetDistance)
+        } else if state.enemyDistance > targetDistance {
+            state.enemyDistance = max(state.enemyDistance - maxStep, targetDistance)
         }
         
         // Update continuous delegate feedback (enemy position)
@@ -358,6 +373,23 @@ final class CombatEngine {
         state.enemy.enter(state: .recovering, duration: difficulty.recoveryDuration)
     }
     
+    /// After an attack volley, the enemy retreats 1-2 steps.
+    private func retreatAfterVolley() {
+        let newRange = state.range.farther
+        if newRange != state.range {
+            state.range = newRange
+            delegate?.combatEngine(self, rangeDidChange: newRange)
+            // Sometimes retreat two steps
+            if Float.random(in: 0...1) < 0.3 {
+                let furtherRange = state.range.farther
+                if furtherRange != state.range {
+                    state.range = furtherRange
+                    delegate?.combatEngine(self, rangeDidChange: furtherRange)
+                }
+            }
+        }
+    }
+    
     // MARK: - Private: Fighter Timers
     
     private func updateFighterTimers(deltaTime: TimeInterval) {
@@ -396,5 +428,17 @@ final class CombatEngine {
         state.phase = .resolved
         delegate?.combatEngine(self, phaseDidChange: .resolved)
         delegate?.combatEngine(self, roundDidEnd: result)
+    }
+    
+    // MARK: - Distance Mapping
+    
+    /// Target continuous distance for a given range state.
+    /// 0.0 = melee, 1.0 = far away.
+    static func targetDistance(for range: RangeState) -> Float {
+        switch range {
+        case .far:   return 1.0
+        case .mid:   return 0.5
+        case .close: return 0.1
+        }
     }
 }

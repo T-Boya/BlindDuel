@@ -49,8 +49,11 @@ struct CombatState {
     /// The enemy's fighter state.
     var enemy: Fighter
     
-    /// Current range between fighters.
+    /// Current range between fighters (discrete, for combat logic).
     var range: RangeState
+    
+    /// Continuous distance 0.0 (melee) to 1.0 (far). Used for audio smoothing.
+    var enemyDistance: Float
     
     /// The enemy's stereo direction (-1.0 = left, 1.0 = right).
     var enemyDirection: Float
@@ -69,6 +72,7 @@ struct CombatState {
         self.player = Fighter()
         self.enemy = Fighter()
         self.range = .far
+        self.enemyDistance = 1.0
         self.enemyDirection = Float.random(in: -1...1)
         self.phase = .tensionStart
         self.elapsedTime = 0
@@ -80,6 +84,7 @@ struct CombatState {
         player.reset()
         enemy.reset()
         range = .far
+        enemyDistance = 1.0
         enemyDirection = Float.random(in: -1...1)
         phase = .tensionStart
         elapsedTime = 0

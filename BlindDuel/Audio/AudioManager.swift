@@ -55,11 +55,14 @@ final class AudioManager: AudioProviding {
     /// Current actual x-position (smoothed toward target).
     private var footstepCurrentX: Float = 0
     
-    /// Current range cached for footstep parameter calculations.
-    private var footstepRange: RangeState = .far
+    /// Continuous enemy distance 0.0 (melee) to 1.0 (far). Drives volume/tempo/z-depth.
+    private var footstepDistance: Float = 1.0
     
     /// Whether the enemy is actively approaching (running tempo).
     private var footstepIsApproaching = false
+    
+    /// Whether footsteps are active.
+    private var footstepsActive = false
     
     // MARK: - Position Mapping
     
@@ -131,7 +134,7 @@ final class AudioManager: AudioProviding {
     
     func updateEnemyPosition(range: RangeState, direction: Float) {
         let z = zPosition(for: range)
-        let x = direction * 2.0 // Scale direction to spatial width
+        let x = direction * 2.5 // Scale direction to spatial width
         let position = AVAudio3DPoint(x: x, y: 0, z: z)
         let reverb = reverbBlend(for: range)
         
@@ -200,53 +203,69 @@ final class AudioManager: AudioProviding {
     // MARK: - Enemy Footsteps
     
     func startEnemyFootsteps() {
-        guard footstepTimer == nil else { return }
+        guard !footstepsActive else { return }
+        footstepsActive = true
         footstepCurrentX = 0
         footstepTargetX = Float.random(in: -1.0...1.0)
         scheduleNextFootstep()
     }
     
     func stopEnemyFootsteps() {
+        footstepsActive = false
         footstepTimer?.invalidate()
         footstepTimer = nil
         footstepSourceA.stop()
         footstepSourceB.stop()
     }
     
-    func updateEnemyFootsteps(range: RangeState, direction: Float, isApproaching: Bool) {
-        footstepRange = range
+    func updateEnemyFootsteps(distance: Float, direction: Float, isApproaching: Bool) {
+        footstepDistance = distance
         footstepIsApproaching = isApproaching
         // Nudge target toward the enemy's actual direction but add randomness
-        footstepTargetX = direction + Float.random(in: -0.4...0.4)
+        footstepTargetX = direction + Float.random(in: -0.3...0.3)
         footstepTargetX = max(-1.0, min(1.0, footstepTargetX))
+        
+        // If very close (melee), stop footsteps — they're standing in front of you
+        if distance < 0.12 && footstepsActive {
+            footstepTimer?.invalidate()
+            footstepTimer = nil
+        } else if distance >= 0.12 && footstepsActive && footstepTimer == nil {
+            scheduleNextFootstep()
+        }
     }
     
     // MARK: - Private Footstep Scheduling
     
-    /// Interval between heel clicks based on range and approach state.
+    /// Interval between heel clicks — smooth gradient from distance.
+    /// Far (1.0) = slow walk, close (0.15) = quick steps, approach = running.
     private func footstepInterval() -> TimeInterval {
-        let base: TimeInterval
-        switch footstepRange {
-        case .far:  base = 1.1   // slow, measured heel-click walk
-        case .mid:  base = 0.65  // moderate pace
-        case .close: base = 0.38 // quick steps
-        }
-        // Running: halve the interval
-        return footstepIsApproaching ? base * 0.5 : base
+        // Linear interpolation: distance 1.0 → 1.1s, distance 0.15 → 0.35s
+        let t = max(0.0, min(1.0, footstepDistance))
+        let base = Double(0.35 + t * 0.75) // 0.35s at closest, 1.1s at farthest
+        // Running: 60% of normal interval
+        return footstepIsApproaching ? base * 0.6 : base
     }
     
-    /// Volume for footstep based on range.
+    /// Volume for footstep — smooth gradient from distance.
+    /// Far = quiet, close = loud.
     private func footstepVolume() -> Float {
-        switch footstepRange {
-        case .far:   return 0.25
-        case .mid:   return 0.55
-        case .close: return 0.90
-        }
+        let t = max(0.0, min(1.0, footstepDistance))
+        // distance 0.0 → volume 0.95,  distance 1.0 → volume 0.15
+        return 0.95 - t * 0.80
     }
     
-    /// Z-depth for footstep (matches enemy positioning).
+    /// Z-depth for footstep — smooth gradient from distance.
     private func footstepZ() -> Float {
-        zPosition(for: footstepRange)
+        let t = max(0.0, min(1.0, footstepDistance))
+        // distance 0.0 → z = -0.5, distance 1.0 → z = -6.0
+        return -0.5 - t * 5.5
+    }
+    
+    /// Reverb blend — smooth gradient from distance.
+    private func footstepReverb() -> Float {
+        let t = max(0.0, min(1.0, footstepDistance))
+        // distance 0.0 → 0.15 (dry/present), distance 1.0 → 0.55 (reverberant/far)
+        return 0.15 + t * 0.40
     }
     
     /// Schedule the next footstep click.
@@ -259,8 +278,10 @@ final class AudioManager: AudioProviding {
     
     /// Play one heel click and schedule the next.
     private func fireFootstep() {
-        // Drift the position toward the wandering target
-        let drift: Float = 0.15
+        guard footstepsActive else { return }
+        
+        // Smoothly drift position toward the wandering target (small steps)
+        let drift: Float = 0.06
         if footstepCurrentX < footstepTargetX {
             footstepCurrentX = min(footstepCurrentX + drift, footstepTargetX)
         } else {
@@ -268,14 +289,14 @@ final class AudioManager: AudioProviding {
         }
         
         // Occasionally pick a new random target (simulating unpredictable movement)
-        if Float.random(in: 0...1) < 0.35 {
+        if Float.random(in: 0...1) < 0.30 {
             footstepTargetX = Float.random(in: -1.0...1.0)
         }
         
         let z = footstepZ()
-        let x = footstepCurrentX * 2.0 // Scale to spatial width
+        let x = footstepCurrentX * 2.5 // Scale to spatial width
         let position = AVAudio3DPoint(x: x, y: 0, z: z)
-        let reverb = reverbBlend(for: footstepRange)
+        let reverb = footstepReverb()
         let vol = footstepVolume()
         
         // Pick the source and alternate
